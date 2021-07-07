@@ -12,4 +12,15 @@ node{
   //    mail bcc: '', body: '''Hi Welcome to Email Alerts
   //    Thanks
   //    Mandeep''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'monteoberoigcp9@gmail.com'
+  
+  stage('Slack Notifications'){ 
+    slackSend baseUrl: 'https://hooks.slack.com/services/', 
+    channel: '#jenkins-pipeline-demo', 
+    color: 'good', 
+    message: 'Welcome to Jenkins, Slack', 
+    tokenCredentialId: 'slack-demo', 
+    username: 'cloudzune'
+  
+  }
+  
   }
