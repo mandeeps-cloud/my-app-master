@@ -17,7 +17,7 @@ node{
     slackSend baseUrl: 'https://hooks.slack.com/services/', 
     channel: '#jenkins-pipeline-demo', 
     color: 'good', 
-    message: 'Welcome to Jenkins, Slack, This is Mandeep Singh, Build Start', 
+    message: 'Welcome to Jenkins, Slack, Build Initate', 
     tokenCredentialId: 'slack-demo', 
     username: 'cloudzune'
   
