@@ -13,6 +13,12 @@ node{
   //    Thanks
   //    Mandeep''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'monteoberoigcp9@gmail.com'
   
+  stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'maven-3', type: 'maven'
+        withSonarQubeEnv('sonar-9') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
+  }
   stage('Slack Notifications'){ 
     slackSend baseUrl: 'https://hooks.slack.com/services/', 
     channel: '#jenkins-pipeline-demo', 
