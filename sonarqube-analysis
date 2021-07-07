@@ -23,5 +23,4 @@ node{
     message: 'Welcome to Jenkins, Slack, Build Initate', 
     tokenCredentialId: 'slack-demo', 
     username: 'cloudzune'
-  
   }
