@@ -1,6 +1,5 @@
 node{
-  stage('SCM Checkout'){
-    
+  stage('SCM Checkout'){ 
     git 'https://github.com/mandeeps-cloud/my-app-master'
   }
   stage('Compile-Package'){
@@ -8,19 +7,28 @@ node{
   def mvnHome = tool name: 'maven-3', type: 'maven'
     sh "${mvnHome}/bin/mvn package"
   }
+  //stage('Email Notifications'){    
+  //    mail bcc: '', body: '''Hi Welcome to Email Alerts
+  //    Thanks
+  //    Mandeep''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'monteoberoigcp9@gmail.com'
   
-  stage('SonarQube Analysis') {
-        def mvnHome =  tool name: 'maven-3', type: 'maven'
-        withSonarQubeEnv('sonar-9') { 
-          sh "${mvnHome}/bin/mvn sonar:sonar"
-        }
+  stage('Sonarqube Analysis'){
+   def mvnHome = tool name: 'maven-3', type: 'maven'
+   withSonarQubeEnv('sonar-9'){
+   sh "${mvnHome}/bin/mvn sonar:sonar"
+  
+  }
+   
   }
   
   stage('Slack Notifications'){ 
     slackSend baseUrl: 'https://hooks.slack.com/services/', 
     channel: '#jenkins-pipeline-demo', 
     color: 'good', 
-    message: 'Welcome to Jenkins, Slack, Build Initate', 
+    message: 'Welcome to Jenkins, Slack Integration, Build Initate', 
     tokenCredentialId: 'slack-demo', 
     username: 'cloudzune'
+  
   }
+  
+}
