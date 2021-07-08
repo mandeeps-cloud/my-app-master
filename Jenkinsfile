@@ -1,7 +1,6 @@
 node{
-  stage('SCM Checkout'){
-    
-    git 'https://github.com/mandeeps-cloud/my-app-master'
+  stage('SCM Checkout'){ 
+    git 'https://github.com/mandeeps-cloud/my-app-master
   }
 }
   stage('Compile-Package'){
